@@ -57,5 +57,13 @@
     "modelWarmup": true,
     "preloadModels": true
   },
+  "mcpServers": {
+    "qwen-expert": {
+      "command": "node",
+      "args": ["./mcp-server/src/index.js"],
+      "env": {},
+      "description": "Intelligent Expert MCP Server - Architecture, Development, Cybersecurity"
+    }
+  },
   "$version": 3
 }
