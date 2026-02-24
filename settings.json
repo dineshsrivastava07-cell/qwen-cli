@@ -1,78 +1,11 @@
 {
-  "env": {
-    "BAILIAN_CODING_PLAN_API_KEY": "http://localhost:11434/v1"
-  },
-  "modelProviders": {
-    "ollama": {
-      "baseUrl": "http://localhost:11434/v1",
-      "models": [
-        {
-          "id": "qwen2.5-coder:7b",
-          "name": "qwen2.5-coder:7b",
-          "description": "Local Qwen2.5 Coder 7B - default for simple tasks"
-        }
-      ]
-    },
-    "openai": [
-      {
-        "id": "qwen3.5-plus",
-        "name": "qwen3.5-plus",
-        "description": "qwen3.5-plus model with thinking enabled from Coding Plan (Global/Intl)",
-        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
-        "envKey": "BAILIAN_CODING_PLAN_API_KEY",
-        "generationConfig": {
-          "extra_body": {
-            "enable_thinking": true
-          }
-        }
-      },
-      {
-        "id": "qwen3-coder-plus",
-        "name": "qwen3-coder-plus",
-        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
-        "description": "qwen3-coder-plus model from Coding Plan (Global/Intl)",
-        "envKey": "BAILIAN_CODING_PLAN_API_KEY"
-      },
-      {
-        "id": "qwen3-max-2026-01-23",
-        "name": "qwen3-max-2026-01-23",
-        "description": "qwen3-max model with thinking enabled from Coding Plan (Global/Intl)",
-        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
-        "envKey": "BAILIAN_CODING_PLAN_API_KEY",
-        "generationConfig": {
-          "extra_body": {
-            "enable_thinking": true
-          }
-        }
-      }
-    ]
+  "model": {
+    "name": "auto",
+    "provider": "auto"
   },
   "security": {
     "auth": {
       "selectedType": "qwen-oauth"
-    }
-  },
-  "codingPlan": {
-    "region": "global",
-    "version": "fca38c806f59b37de7beecd02b743b47d3d5a57c7c62ce38034bb09e725f221b"
-  },
-  "model": {
-    "name": "coder-model",
-    "provider": "ollama"
-  },
-  "escalation": {
-    "enabled": true,
-    "order": [
-      "qwen2.5-coder:7b",
-      "qwen3-coder-plus",
-      "qwen3-max-2026-01-23",
-      "qwen3.5-plus"
-    ],
-    "rules": {
-      "simple": "qwen2.5-coder:7b",
-      "complex": "qwen3-coder-plus",
-      "multi-file": "qwen3-max-2026-01-23",
-      "advanced": "qwen3.5-plus"
     }
   },
   "$version": 3
