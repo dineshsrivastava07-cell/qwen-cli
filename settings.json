@@ -1,7 +1,37 @@
 {
   "model": {
-    "name": "auto",
-    "provider": "auto"
+    "name": "qwen3-coder-plus",
+    "provider": "openai",
+    "warmup": true,
+    "preload": true
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "qwen3-coder-plus",
+        "name": "qwen3-coder-plus",
+        "description": "Primary cloud model - always active",
+        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
+        "envKey": "BAILIAN_CODING_PLAN_API_KEY",
+        "keepWarm": true
+      },
+      {
+        "id": "qwen3.5-plus",
+        "name": "qwen3.5-plus",
+        "description": "Secondary cloud model - standby",
+        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
+        "envKey": "BAILIAN_CODING_PLAN_API_KEY",
+        "keepWarm": true
+      },
+      {
+        "id": "qwen3-max-2026-01-23",
+        "name": "qwen3-max-2026-01-23",
+        "description": "Advanced cloud model - standby",
+        "baseUrl": "https://coding-intl.dashscope.aliyuncs.com/v1",
+        "envKey": "BAILIAN_CODING_PLAN_API_KEY",
+        "keepWarm": true
+      }
+    ]
   },
   "security": {
     "auth": {
@@ -11,12 +41,21 @@
   "session": {
     "keepAlive": true,
     "idleTimeout": 0,
-    "maxSessionDuration": 0
+    "maxSessionDuration": 0,
+    "persistentConnection": true,
+    "heartbeatInterval": 30000
   },
   "connection": {
     "retryOnDisconnect": true,
-    "maxRetries": 5,
-    "retryDelay": 1000
+    "maxRetries": -1,
+    "retryDelay": 1000,
+    "persistent": true,
+    "poolSize": 5
+  },
+  "cache": {
+    "enabled": true,
+    "modelWarmup": true,
+    "preloadModels": true
   },
   "$version": 3
 }
