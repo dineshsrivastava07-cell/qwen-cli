@@ -1,0 +1,8 @@
+# Qwen CLI - Ignore sensitive files
+installation_id
+oauth_creds.json
+tmp/
+todos/
+debug/
+projects/
+.DS_Store
